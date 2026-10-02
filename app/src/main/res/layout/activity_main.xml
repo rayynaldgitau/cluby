@@ -33,7 +33,7 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:contentDescription="Main Logo"
-            android:src="@drawable/logo1" />
+            android:src="@drawable/mainpic" />
 
         <!-- Main heading: greets returning users -->
         <TextView
