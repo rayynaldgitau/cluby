@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_sign_up.xml — Registration Screen Layout
+    This is the UI for the signup Activity.
+    A ScrollView wraps the form so it remains fully scrollable when the soft keyboard appears,
+    particularly important on smaller screens with many fields.
+    fillViewport="true" ensures the layout fills the screen even if content is short.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fillViewport="true"
+    tools:context=".signup">
+
+    <!--
+        Vertical LinearLayout that stacks all form fields top-to-bottom.
+        gravity="center_horizontal" keeps fields centred on wider screens.
+        Padding adds breathing room around the form content.
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="40dp">
+
+        <!-- Screen title: tells the user they are creating a new account -->
+        <TextView
+            android:id="@+id/SignUpText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create account"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <!-- Sub-heading: encourages the user to complete the form -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="32dp"
+            android:text="Sign up to get started"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="16sp" />
+
+        <!--
+            Email input field.
+            inputType="textEmailAddress" shows an email-optimised keyboard (with @ key)
+            and enables system autofill for email addresses.
+            The email icon on the start side visually identifies this field.
+        -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Email"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:startIconDrawable="@android:drawable/ic_dialog_email">
+
+            <!-- The actual email text input -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--
+            Password input field.
+            endIconMode="password_toggle" adds a show/hide eye icon.
+            inputType="textPassword" masks characters as the user types.
+        -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Password"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:endIconMode="password_toggle">
+
+            <!-- The actual password text input (characters hidden by default) -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signupPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--
+            Phone number input field.
+            inputType="phone" shows a numeric dial-pad keyboard and enables
+            system autofill for phone numbers.
+            The call icon on the start side helps the user identify this field.
+        -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:hint="Phone number"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:startIconDrawable="@android:drawable/ic_menu_call">
+
+            <!-- The actual phone number text input -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signupTelephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Label for the gender selection section below -->
+        <TextView
+            android:id="@+id/signupGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!--
+            RadioGroup ensures only one gender option can be selected at a time.
+            orientation="horizontal" places Male and Female side by side.
+            The selected radio button ID can be read in Java via radioGroup.getCheckedRadioButtonId().
+        -->
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:orientation="horizontal">
+
+            <!-- Male option — selected by default if the user doesn't change it -->
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_option1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:text="Male" />
+
+            <!-- Female option -->
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radio_option2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+        </RadioGroup>
+
+        <!--
+            Primary Sign Up action button.
+            Full-width and 56dp height follow Material3 guidelines for prominent actions.
+            In the signup Java class, this button should validate the fields and
+            create a new user account (e.g. via Firebase Auth or a backend API).
+        -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Sign Up"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+        <!--
+            Navigation link back to the login screen for users who already have an account.
+            Tapping this should finish this Activity and return to MainActivity.
+        -->
+        <TextView
+            android:id="@+id/textToLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:padding="8dp"
+            android:text="Already have an account? Login"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!--
+            "Forgot password?" link shown on the signup screen as well.
+            This could navigate to a password recovery screen.
+            Note: the muted color (colorOnSurfaceVariant) makes it visually secondary
+            compared to the main SignUp button.
+        -->
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Forgot password?"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</ScrollView>

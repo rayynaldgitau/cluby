@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    activity_main.xml — Login Screen Layout
+    This is the UI for MainActivity (the first screen the user sees).
+    A ScrollView is used as the root so the form remains accessible on small screens
+    or when the keyboard is shown. fillViewport="true" ensures the content fills
+    the full screen height even when there is little content.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fillViewport="true">
+
+    <!--
+        A vertical LinearLayout acts as the form container.
+        minHeight="600dp" ensures the layout does not collapse on large screens.
+        Horizontal and vertical padding create comfortable whitespace around the form.
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="600dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="40dp">
+
+        <!-- App logo displayed at the top of the login screen -->
+        <ImageView
+            android:id="@+id/signup"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:contentDescription="Main Logo"
+            android:src="@drawable/logo1" />
+
+        <!-- Main heading: greets returning users -->
+        <TextView
+            android:id="@+id/welcometextSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Welcome back"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <!-- Sub-heading: instructs the user to log in -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="40dp"
+            android:text="Login to your account"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="16sp" />
+
+        <!--
+            Username input field using Material3 OutlinedBox style.
+            Rounded corners (12dp) give a modern card-like appearance.
+            A person icon on the start side helps the user identify the field quickly.
+        -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Username"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:startIconDrawable="@android:drawable/ic_menu_myplaces">
+
+            <!-- The actual text input for the username (plain text input type) -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--
+            Password input field.
+            endIconMode="password_toggle" adds an eye icon that lets the user
+            show or hide the password they are typing.
+        -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:endIconMode="password_toggle">
+
+            <!-- The actual text input for the password (hidden characters by default) -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_toggle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--
+            "Forgot password?" tappable link, aligned to the end (right in LTR).
+            In MainActivity's Java code this should have a click listener
+            to trigger a password reset flow.
+        -->
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="8dp"
+            android:text="Forgot password?"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!--
+            Primary login action button.
+            Full-width (match_parent) and fixed 56dp height follow Material3 button guidelines.
+            cornerRadius="12dp" keeps it visually consistent with the input fields.
+        -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:text="Login"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
+
+        <!--
+            Navigation link to the signup screen.
+            Tapping this should start the signup Activity.
+            The extra padding (8dp) enlarges the touch target for easier tapping.
+        -->
+        <TextView
+            android:id="@+id/textToSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:padding="8dp"
+            android:text="Don't have an account? Sign up"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "192633732240",
+    "project_id": "cluby-1efb2",
+    "storage_bucket": "cluby-1efb2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192633732240:android:d1ca93da662900c7816c15",
+        "android_client_info": {
+          "package_name": "com.example.appexample1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxfANV5rVzZYfSuDqQ5nHsP6nw5A3FxpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
